@@ -1,0 +1,19 @@
+.inicio {
+    background-image: url('/img/megabiblio.png');
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+    text-align: center;
+}
+
+
+.hola {
+    background-color: #cfa400 !important;
+}
+
+#menu {
+    margin-right: 20px;
+}
