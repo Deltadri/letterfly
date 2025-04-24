@@ -76,7 +76,7 @@ $resultado = $conn->query($query);
                     <div class="card-body">
                         <h6 class="card-title"><?php echo htmlspecialchars($libro['titulo']); ?></h6> <!-- Cambiado h5 a h6 para un título más pequeño -->
                         <p class="card-text" style="font-size: 0.9rem;"><?php echo htmlspecialchars(substr($libro['descripcion'], 0, 80)) . '...'; ?></p> <!-- Reducido el tamaño del texto -->
-                        <a href="detalle_libro.php?id=<?php echo $libro['idLibro']; ?>" class="btn btn-sm btn-primary">Ver más</a> <!-- Botón más pequeño -->
+                        <a href="libro.php?id=<?php echo $libro['idLibro']; ?>" class="btn btn-sm btn-primary">Ver más</a> <!-- Botón más pequeño -->
                     </div>
                 </div>
             </div>
