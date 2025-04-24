@@ -15,12 +15,14 @@ session_start();
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/estilos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><img src="/img/logo/logo.png" alt="" width="130"></a>
+    <a class="navbar-brand" href="libros.php"><img src="/img/logo/logo.png" alt="" width="130"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>

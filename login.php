@@ -23,7 +23,7 @@ if (!isset($_SESSION['user'])) {
       $email = $_POST["email"];
       $password = $_POST["pass"];
       // chequea si es correcto o que
-      $base = mysqli_connect("localhost","root","Adriylaura2","letterfly");
+      $base = mysqli_connect("localhost","ltuser","LtAdriylaura2","letterfly");
 
       $consulta = "SELECT nombre_usuario, email, password, rol FROM Usuario WHERE email='$email' AND password='$password'";
       $resultado = mysqli_query($base,$consulta);
