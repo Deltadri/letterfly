@@ -1,15 +1,34 @@
-# letterfly
-Una página para guardar reseñas de libros
+# 📚 Letterfly
 
-Ahora mismo tiene:
+Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
 
-header.php: Es el menú superior de la página, además incluye la referecnia a bootstrap
+![Letterfly](https://github.com/user-attachments/assets/eacccf9f-2d51-49fa-bd45-dd141187050c)
 
-registro.php: Permite a cualquiera registrarse, contiene tambien un captcha y comprueba si el campo contraseña y confirmar contraseña son la misma.
 
-login.php: Es la parte que permite iniciar sesión, comprueba si el correo y contraseña están en la base de datos y además comprueba también si el usuario tiene el rol "bann" en la base de datos en cuyo caso no permitirá el inicio de sesión. Si ya tenias la sesión iniiciada la idea es que te redirija automaticamente a la pagina de inicio/la pagina donde aparecerán los libros
+---
 
-==============================================
+## 🚀 Funcionalidades
 
-Luego en .htaccess se especifica las páginas de error 403 (Forbbiden) y 404 (Not Found) las cuales se encuentran en /include/errores
-ademas tambien está puesto la opcion de desactivar la indexación por seguridad por lo que si intentas acceder a una carpeta devuelve un error 403
+- 🔐 Registro e inicio de sesión con control de acceso
+- 🧠 Gestión de libros: portada, título, descripción, autor, género, etc.
+- 🧾 Filtro por género y búsqueda por título
+- 📄 Página de detalle con toda la información del libro
+- 👍 Sistema de Reseñas (en desarrollo)
+- 📱 Diseño responsive con Bootstrap
+
+---
+
+## 🖼️ Capturas
+
+![detalle](https://github.com/user-attachments/assets/c385fcd5-7e86-424b-b370-5b7cbb295071)
+
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- PHP 7.4
+- MySQL / MariaDB
+- Bootstrap 5
+- HTML5 + CSS3
+- (opcional) JavaScript
