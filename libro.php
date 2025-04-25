@@ -10,13 +10,11 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $idLibro = mysqli_real_escape_string($conn, $_GET['id']);
 
-$consulta = "SELECT l.*, 
-                 g.nombre AS nombreGenero, 
-                 a.nombre AS nombreAutor
-          FROM Libro l, Genero g, Autor a
-          WHERE l.idLibro = '$idLibro'
-            AND l.genero = g.idGenero
-            AND l.autor = a.idAutor";
+// Obtener el libro y el autor
+$consulta = "SELECT l.*, a.nombre AS nombreAutor
+             FROM Libro l, Autor a
+             WHERE l.idLibro = '$idLibro'
+               AND l.autor = a.idAutor";
 
 $resultado = mysqli_query($conn, $consulta);
 
@@ -26,6 +24,18 @@ if (mysqli_num_rows($resultado) === 0) {
 }
 
 $libro = mysqli_fetch_assoc($resultado);
+
+// Obtener géneros del libro
+$consultaGeneros = "SELECT g.nombre 
+                    FROM Genero g, LibroGenero lg 
+                    WHERE lg.idLibro = '$idLibro' AND g.idGenero = lg.idGenero";
+$generosResultado = mysqli_query($conn, $consultaGeneros);
+
+$generos = [];
+while ($fila = mysqli_fetch_assoc($generosResultado)) {
+    $generos[] = $fila['nombre'];
+}
+$listaGeneros = implode(', ', $generos);
 ?>
 
 <div class="container mt-5">
@@ -36,7 +46,7 @@ $libro = mysqli_fetch_assoc($resultado);
         <div class="col-md-8">
             <h2><?php echo htmlspecialchars($libro['titulo']); ?></h2>
             <p><strong>Autor:</strong> <?php echo htmlspecialchars($libro['nombreAutor']); ?></p>
-            <p><strong>Género:</strong> <?php echo htmlspecialchars($libro['nombreGenero']); ?></p>
+            <p><strong>Géneros:</strong> <?php echo htmlspecialchars($listaGeneros); ?></p>
             <p><strong>Páginas:</strong> <?php echo htmlspecialchars($libro['paginas']); ?></p>
             <p><strong>Publicado:</strong> <?php echo htmlspecialchars($libro['fpublicacion']); ?></p>
             <hr>

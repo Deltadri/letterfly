@@ -35,10 +35,10 @@ $resultado = $conn->query($query);
 
     <div class="collapse d-md-block" id="menuGeneros">
         <div class="list-group">
-            <a href="libros.php" class="list-group-item list-group-item-action <?php echo empty($_GET['genero']) ? 'active' : ''; ?>">Todos los géneros</a>
+            <a href="libros.php" class="list-group-item list-group-item-action <?php echo (!isset($_GET['genero']) || $_GET['genero'] === '') ? 'active' : ''; ?>">Todos los géneros</a>
             <?php
             // Obtener géneros desde la base de datos
-            $queryGeneros = "SELECT * FROM Genero";
+            $queryGeneros = "SELECT * FROM Genero ORDER BY idGenero ASC";
             $resultadoGeneros = $conn->query($queryGeneros);
             while ($genero = $resultadoGeneros->fetch_assoc()) {
                 $activo = (isset($_GET['genero']) && $_GET['genero'] == $genero['idGenero']) ? 'active' : '';
@@ -52,7 +52,7 @@ $resultado = $conn->query($query);
     <div class="col-md-9">
 <?php
 // Filtrar libros por género si se selecciona uno
-if (isset($_GET['genero']) && !empty($_GET['genero'])) {
+if (isset($_GET['genero']) && $_GET['genero'] !== '') {
 $generoSeleccionado = $conn->real_escape_string($_GET['genero']);
 $query = "SELECT * FROM Libro WHERE genero = '$generoSeleccionado'";
 if (!empty($busqueda)) {
