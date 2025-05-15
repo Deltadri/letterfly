@@ -47,7 +47,7 @@ if (!isset($_SESSION['user'])) {
         echo "</div>";
 
         // Google Recaptcha
-        echo "<div class='g-recaptcha' data-sitekey='6LeuLBIrAAAAAO67m70Vj4_cnN2LxFO8Np4raUVe'></div>";
+        echo "<div class='g-recaptcha' data-sitekey='6LeHSTsrAAAAALeY9dOk9lnyuD13uhyqXYGEkyLt'></div>";
         echo "<br/>";
 
         echo "<button type='submit' class='btn btn-primary'>Entrar</button>";
