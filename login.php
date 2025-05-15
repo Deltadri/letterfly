@@ -22,11 +22,12 @@ if (!isset($_SESSION['user'])) {
   else {
       $email = $_POST["email"];
       $password = $_POST["pass"];
+      
       // chequea si es correcto o que
-      $base = mysqli_connect("localhost","ltuser","LtAdriylaura2","letterfly");
+      include 'config/conexion.php';
 
       $consulta = "SELECT idUsuario, nombre_usuario, email, password, rol FROM Usuario WHERE email='$email' AND password='$password'";
-      $resultado = mysqli_query($base,$consulta);
+      $resultado = mysqli_query($conn,$consulta);
 
       //echo mysqli_num_rows($resultado);
       if (mysqli_num_rows($resultado) == 1) {

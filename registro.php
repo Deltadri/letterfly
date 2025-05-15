@@ -62,9 +62,11 @@ if (!isset($_SESSION['user'])) {
         $password2 = $_POST['pass2'];
 
         // Cosas del ReCaptcha (Lo encontré en la pagina de Google Recaptcha)
-        $secret = "6LeuLBIrAAAAANn59h8MMcnCXAJLJKeeLU6dvOGD";
+        include 'config/config.php';
+        $secret = $recaptcha_secret;
         $response = $_POST['g-recaptcha-response'];
         $remoteip = $_SERVER['REMOTE_ADDR'];
+        
         $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
         $captcha_success = json_decode($verify);
 
@@ -72,16 +74,16 @@ if (!isset($_SESSION['user'])) {
         if ($captcha_success->success) {
             // Comprueba si las 2 contraseñas son la misma
             if ($password == $password2) {
-                $base = mysqli_connect("localhost","root","Adriylaura2","letterfly");
-    
+                include 'config/conexion.php';
+
                 // Verifica si el usuario ya existe
                 $consulta = "SELECT * FROM Usuario WHERE email='$email'";
-                $resultado = mysqli_query($base,$consulta);
+                $resultado = mysqli_query($conn,$consulta);
     
                 if (mysqli_num_rows($resultado) == 0) {
                     // Si no existe, inserta el nuevo usuario
                     $consulta = "INSERT INTO Usuario (nombre_usuario, email, password, rol) VALUES ('$user', '$email', '$password', 'user')";
-                    mysqli_query($base,$consulta);
+                    mysqli_query($conn,$consulta);
                     echo "<br>";
                     echo "<div class='text-center'>";
                     echo "Usuario registrado con éxito.";

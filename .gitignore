@@ -1,2 +1,4 @@
 /img/libros/
 genera_libros.php
+/config/conexion.php
+/config/config.php
