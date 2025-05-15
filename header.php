@@ -33,14 +33,11 @@ session_start();
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
         <?php
-        echo "<a class='nav-link text-dark' href='https://x.com/'".$_SESSION['user'].">".$_SESSION['user']."</a>";
+        echo "<a class='nav-link text-dark' href='usuario.php'>".$_SESSION['user']."</a>";
         ?>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="https://www.instagram.com/adri_fer24/?hl=bg">Instagram</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="https://www.facebook.com/profile.php?id=61561413042239">Facebook</a>
+          <a class="nav-link text-dark" href="salir.php">Salir</a>
         </li>
       </ul>
     </div>
@@ -51,12 +48,6 @@ session_start();
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link text-dark" href="login.php">Iniciar sesión</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="https://www.instagram.com/adri_fer24/?hl=bg">Instagram</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="https://www.facebook.com/profile.php?id=61561413042239">Facebook</a>
         </li>
       </ul>
     </div>

@@ -13,7 +13,7 @@ include ("header.php");
 ?>
 <div class="container mt-5" style="background-color: yellow; text-align: center; padding: 10px; border-radius: 10px;">
     <h3>En Desarrollo</h3>
-    <p>Esta página está actualmente en desrrollo. No se registre en ella si puede ser</p>
+    <p>Esta página está actualmente en desrrollo. No introduzca sus datos personales ya que es altamente probable que existan vulnerabilidades de seguridad que puedan exponer los datos introducidos a atacantse malinencionados</p>
 </div>
 
 <?php
