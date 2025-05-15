@@ -31,4 +31,4 @@ Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
 - MySQL / MariaDB
 - Bootstrap 5
 - HTML5 + CSS3
-- (opcional) JavaScript
+- (EL minimo posible porque no lo entiendo) JavaScript
