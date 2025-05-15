@@ -1,3 +1,24 @@
+<head>
+    <link rel="stylesheet" href="css/libro.css">
+
+    <style>
+.puntuacion-comentario {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+.estrella {
+    width: 20px;
+    height: 20px;
+}
+.estrella.vacia {
+    opacity: 0.2;
+}
+</style>
+
+</head>
+
 <?php
 session_start();
 include 'header.php';
@@ -52,6 +73,63 @@ $listaGeneros = implode(', ', $generos);
             <hr>
             <p><?php echo nl2br(htmlspecialchars($libro['descripcion'])); ?></p>
             <a href="libros.php" class="btn btn-secondary mt-3">← Volver al catálogo</a>
+        </div>
+
+        <div class="col-md-8">
+            <h3 class="mt-4">Comentarios</h3>
+            <?php
+            // Obtener comentarios del libro
+            $consultaComentarios = "SELECT o.*, u.nombre_usuario 
+                                     FROM Opinion o, Usuario u 
+                                     WHERE o.idLibro = '$idLibro' AND o.idUsuario = u.idUsuario 
+                                     ORDER BY o.fecha DESC";
+            $comentariosResultado = mysqli_query($conn, $consultaComentarios);
+
+            if (isset($_SESSION['user'])) {
+                echo "<h4 class='mt-4'>Deja tu comentario</h4>";
+                echo "<form action='guardar_comentario.php' method='POST'>";
+                echo "<input type='hidden' name='idLibro' value='" . htmlspecialchars($idLibro) . "'>";
+                echo "<div class='mb-3'>";
+                echo "<label for='puntuacion' class='form-label'>Puntuación (1-5)</label>";
+                echo "<input type='number' name='puntuacion' class='form-control' min='1' max='5' required>";
+                echo "</div>";
+                echo "<div class='mb-3'>";
+                echo "<label for='comentario' class='form-label'>Comentario</label>";
+                echo "<textarea name='comentario' class='form-control' rows='3' required></textarea>";
+                echo "</div>";
+                echo "<button type='submit' class='btn btn-primary'>Enviar</button>";
+                echo "</form>";
+            }
+
+            if (mysqli_num_rows($comentariosResultado) > 0) {
+                while ($comentario = mysqli_fetch_assoc($comentariosResultado)) {
+                    echo "<div class='card mb-3'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>" . htmlspecialchars($comentario['nombre_usuario']) . "</h5>";
+
+                    // Mostrar puntuación con estrellas
+                    $puntuacion = (int)$comentario['puntuacion'];
+                    echo "<div class='puntuacion-comentario'>";
+                    echo "<strong>$puntuacion</strong> ";
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $puntuacion) {
+                            echo "<img src='img/star.png' class='estrella' alt='★'>";
+                        } else {
+                            echo "<img src='img/star.png' class='estrella vacia' alt='☆'>";
+                        }
+                    }
+                    echo "</div>";
+
+                    echo "<p class='card-text'>" . nl2br(htmlspecialchars($comentario['comentario'])) . "</p>";
+                    echo "<p class='card-text'><small class='text-muted'>Publicado el " . htmlspecialchars($comentario['fecha']) . "</small></p>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+
+            } else {
+                echo "<p>No hay comentarios para este libro.</p>";
+            }
+            ?>
         </div>
     </div>
 </div>

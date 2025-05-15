@@ -25,7 +25,7 @@ if (!isset($_SESSION['user'])) {
       // chequea si es correcto o que
       $base = mysqli_connect("localhost","ltuser","LtAdriylaura2","letterfly");
 
-      $consulta = "SELECT nombre_usuario, email, password, rol FROM Usuario WHERE email='$email' AND password='$password'";
+      $consulta = "SELECT idUsuario, nombre_usuario, email, password, rol FROM Usuario WHERE email='$email' AND password='$password'";
       $resultado = mysqli_query($base,$consulta);
 
       //echo mysqli_num_rows($resultado);
@@ -50,6 +50,7 @@ if (!isset($_SESSION['user'])) {
           $_SESSION['email'] = $datos['email'];
           $_SESSION['user'] = $datos['nombre_usuario'];
           $_SESSION['rol'] = $datos['rol'];
+          $_SESSION['idUsuario'] = $datos['idUsuario'];
         }
 
         header("Location: login.php");
