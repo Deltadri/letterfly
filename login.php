@@ -48,6 +48,7 @@ if (!isset($_SESSION['user'])) {
         }
         // Si no esta ban pues inicia sesion todo normal
         else {
+          $_SESSION['idUsuario'] = $datos['idUsuario'];
           $_SESSION['email'] = $datos['email'];
           $_SESSION['user'] = $datos['nombre_usuario'];
           $_SESSION['rol'] = $datos['rol'];
@@ -69,7 +70,7 @@ if (!isset($_SESSION['user'])) {
   
 }
 else {
-  echo "Sesion iniciada como".$_SESSION['user'];
+  header("Location: libros.php");
 }
 ?>
 

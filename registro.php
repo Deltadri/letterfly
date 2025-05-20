@@ -10,6 +10,7 @@
 </head>
 <?php
 include ("header.php");
+include ("config/conexion.php");
 ?>
 <div class="container mt-5" style="background-color: yellow; text-align: center; padding: 10px; border-radius: 10px;">
     <h3>En Desarrollo</h3>
@@ -83,7 +84,7 @@ if (!isset($_SESSION['user'])) {
                 if (mysqli_num_rows($resultado) == 0) {
                     // Si no existe, inserta el nuevo usuario
                     $consulta = "INSERT INTO Usuario (nombre_usuario, email, password, rol) VALUES ('$user', '$email', '$password', 'user')";
-                    mysqli_query($conn,$consulta);
+                    mysqli_query($conn, $consulta);
                     echo "<br>";
                     echo "<div class='text-center'>";
                     echo "Usuario registrado con éxito.";
