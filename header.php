@@ -49,6 +49,9 @@ session_start();
         <li class="nav-item">
           <a class="nav-link text-dark" href="login.php">Iniciar sesión</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="registro.php">Registrarse</a>
+        </li>
       </ul>
     </div>
     <?php

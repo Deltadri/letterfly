@@ -2,16 +2,21 @@
     <link rel="stylesheet" href="css/libro.css">
 
     <style>
-.puntuacion-comentario {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+.valoracion-media {
+    font-size: 2rem;
+    font-weight: bold;
     margin-bottom: 10px;
 }
-.estrella {
-    width: 20px;
-    height: 20px;
+
+.puntuacion-comentario.justify-content-center {
+    font-size: 1.5rem;
 }
+
+.estrella {
+    width: 32px;
+    height: 32px;
+}
+
 .estrella.vacia {
     opacity: 0.2;
 }
@@ -61,7 +66,7 @@ $listaGeneros = implode(', ', $generos);
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center mb-3 mb-md-0">
             <img src="img/libros/<?php echo htmlspecialchars($libro['portada']); ?>" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: cover;" alt="Portada del libro">
         </div>
         <div class="col-md-8">
@@ -75,8 +80,45 @@ $listaGeneros = implode(', ', $generos);
             <a href="libros.php" class="btn btn-secondary mt-3">← Volver al catálogo</a>
         </div>
 
-        <div class="col-md-8">
+        <?php
+            // Obtener la media de puntuación del libro
+            $consulta = "SELECT AVG(puntuacion) AS media FROM Opinion WHERE idLibro = '$idLibro'";
+            $resultado = mysqli_query($conn, $consulta);
+            $media = 0;
+
+            if ($media_consultada = mysqli_fetch_assoc($resultado)) {
+                $media = round($media_consultada['media'], 1); // Redondeamos a 1 decimal
+            }
+        ?>
+    
+        <div class="row justify-content-center mt-4">
             <h3 class="mt-4">Comentarios</h3>
+        <div class="col-12 col-md-8">
+            
+            <?php 
+            if ($media > 0) { 
+            ?>
+            <div class="mb-4 text-center">
+                <!--ChatGPTeada apoteosica aquí-->
+                <h5 class="mb-1">Valoración media</h5>
+                <div class="puntuacion-comentario justify-content-center">
+                    <div class="valoracion-media"><?php echo $media; ?> / 5</div>
+                    <?php
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= floor($media)) {
+                            echo "<img src='img/star.png' class='estrella' alt='★'>";
+                        } else {
+                            echo "<img src='img/star.png' class='estrella vacia' alt='☆'>";
+                        }
+                    }
+            }
+            ?>
+                    </div>
+                </div>
+            </div>
+
+
+
             <?php
             // Obtener comentarios del libro
             $consultaComentarios = "SELECT o.*, u.nombre_usuario 
