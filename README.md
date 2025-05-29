@@ -4,24 +4,27 @@
 [![Discord - Letterfly](https://img.shields.io/badge/Discord-Letterfly-blue?logo=discord)](https://discord.gg/Z5NvzV8MAD)
 [![PHP - 7.4](https://img.shields.io/badge/PHP-7.4-green?logo=php)](https://www.php.net/releases/7_4_0.php)
 
+---
 
-
-
+📌 **Versión 1.0 estable**
 
 Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
-
-
-
 
 ---
 
 ## 🚀 Funcionalidades
 
-- 🔐 Registro e inicio de sesión con control de acceso
-- 🧠 Gestión de libros: portada, título, descripción, autor, género, etc.
-- 🧾 Filtro por género y búsqueda por título
-- 📄 Página de detalle con toda la información del libro
-- 👍 Sistema de Reseñas (en desarrollo)
+- 🔍 Buscar libros por título o autor
+- 📂 Filtrar libros por género
+- ⭐ Ver la nota media de cada libro según usuarios
+- ✍️ Publicar nuevas reseñas
+- 📖 Leer reseñas actuales
+- 📬 Proponer nuevos libros incluyendo:
+  - Título
+  - Autor
+  - Géneros
+  - Descripción
+  - Imagen de portada
 - 📱 Diseño responsive con Bootstrap
 
 ---
@@ -29,7 +32,6 @@ Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
 ## 🖼️ Capturas
 
 ![detalle](https://github.com/user-attachments/assets/c385fcd5-7e86-424b-b370-5b7cbb295071)
-
 
 ---
 
@@ -39,4 +41,16 @@ Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
 - MySQL / MariaDB
 - Bootstrap 5
 - HTML5 + CSS3
-- (EL minimo posible porque no lo entiendo) JavaScript
+- (el mínimo posible porque no lo entiendo) JavaScript
+
+---
+
+## 💻 Instalación
+
+Para que funcione debe estar en una carpeta llamada letterfly y deberás crear manualmente las carpetas img/libros y img/propuestas, en caso contrario no funcionará estas carpetas guardarán las imagenes de las portadas de los libros que proponen usuarios y libros ya establecidos
+
+## 🔐 Panel de administración
+
+El código del panel está en un repositorio separado:  
+📁 [`admin_letterfly`](https://github.com/Adrifer24/admin_letterfly)  
+

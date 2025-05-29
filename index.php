@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['user'])) {
+    header("Location: libros.php");
+    exit();
+}
 include ("header.php");
 ?>
 <body class="inicio">

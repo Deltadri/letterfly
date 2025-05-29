@@ -30,7 +30,7 @@ $busqueda = isset($_GET['busqueda']) ? mysqli_real_escape_string($conn, $_GET['b
                 <div class="list-group">
                     <a href="libros.php" class="list-group-item list-group-item-action <?php echo (!isset($_GET['genero']) || $_GET['genero'] === '') ? 'active' : ''; ?>">Todos los géneros</a>
                     <?php
-                    $queryGeneros = "SELECT * FROM Genero ORDER BY idGenero ASC";
+                    $queryGeneros = "SELECT * FROM Genero ORDER BY nombre ASC";;
                     $resultadoGeneros = mysqli_query($conn, $queryGeneros);
                     while ($genero = mysqli_fetch_assoc($resultadoGeneros)) {
                         $activo = (isset($_GET['genero']) && $_GET['genero'] == $genero['idGenero']) ? 'active' : '';
@@ -85,7 +85,26 @@ $busqueda = isset($_GET['busqueda']) ? mysqli_real_escape_string($conn, $_GET['b
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } 
+                
+                $numResultados = mysqli_num_rows($resultado);
+
+                if ($numResultados === 0) {
+                    echo "
+                    <div class='col-12'>
+                        <div class='alert alert-warning text-center'>
+                            No Hay Resultados
+                        </div>
+                        <div class='text-center'>
+                            <a href='proponer_libro.php?titulo=" . urlencode($busqueda) . "' class='btn btn-success'>
+                                ¿No está? ¡Proponlo tú!
+                            </a>
+                        </div>
+                    </div>";
+                }
+
+                
+                ?>
             </div>
         </div>
     </div>

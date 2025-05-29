@@ -14,7 +14,9 @@ $nombreUsuario = $_SESSION['user'];
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
-            echo "<img src='/img/dibujitos/eliminada.png' alt='Cuenta eliminada' width='200'>";
+            <div class="d-flex justify-content-center mb-3">
+                <img src='../../img/dibujitos/eliminada.png' alt='Cuenta eliminada' width='200'>
+            </div>
             <h3 class="mb-4 text-center">Cuenta eliminada</h3>
             <p class="text-center">Tu cuenta ha sido eliminada con éxito. Si deseas volver a registrarte, puedes hacerlo en cualquier momento.</p>
             <div class="d-flex justify-content-center">
