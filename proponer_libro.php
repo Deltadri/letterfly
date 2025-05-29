@@ -106,5 +106,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="libros.php" class="btn btn-secondary">Volver</a>
     </form>
 </div>
-
-<?php include 'footer.php'; ?>
