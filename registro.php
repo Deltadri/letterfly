@@ -79,7 +79,10 @@ if (!isset($_SESSION['user'])) {
     
                 if (mysqli_num_rows($resultado) == 0) {
                     // Si no existe, inserta el nuevo usuario
-                    $consulta = "INSERT INTO Usuario (nombre_usuario, email, password, rol) VALUES ('$user', '$email', '$password', 'user')";
+                    $hash = password_hash($password, PASSWORD_DEFAULT);
+
+                    $consulta = "INSERT INTO Usuario (nombre_usuario, email, password, rol) VALUES ('$user', '$email', '$hash', 'user')";
+
                     mysqli_query($conn, $consulta);
                     echo "<br>";
                     echo "<div class='text-center'>";

@@ -19,7 +19,9 @@ $nombreUsuario = $_SESSION['user'];
             $query = "SELECT * FROM Usuario WHERE idUsuario = '$idUsuario'";
             $resultado = mysqli_query($conn, $query);
             $usuario = mysqli_fetch_assoc($resultado);
-            if ($pass === $usuario['password']) {
+
+
+            if (password_verify($pass, $usuario['password'])) {
                 if ($confirmar === "CONFIRMAR") {
                     $query = "DELETE FROM Usuario WHERE idUsuario = '$idUsuario'";
                     mysqli_query($conn, $query);

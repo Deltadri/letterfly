@@ -20,52 +20,48 @@ if (!isset($_SESSION['user'])) {
     echo "</div>";
   }
   else {
-      $email = $_POST["email"];
-      $password = $_POST["pass"];
+    $email = $_POST["email"];
+    $password = $_POST["pass"];
       
-      // chequea si es correcto o que
-      include 'config/conexion.php';
+    // chequea si es correcto o que
+    include 'config/conexion.php';
 
-      $consulta = "SELECT idUsuario, nombre_usuario, email, password, rol FROM Usuario WHERE email='$email' AND password='$password'";
-      $resultado = mysqli_query($conn,$consulta);
+    $consulta = "SELECT idUsuario, nombre_usuario, email, password, rol FROM Usuario WHERE email='$email'";
 
-      //echo mysqli_num_rows($resultado);
-      if (mysqli_num_rows($resultado) == 1) {
-        $datos = mysqli_fetch_assoc($resultado);
+    $resultado = mysqli_query($conn,$consulta);
 
-        // Comprobamos si esta baneado o no
+    //echo mysqli_num_rows($resultado);
+      
+    if (mysqli_num_rows($resultado) == 1) {
+      $datos = mysqli_fetch_assoc($resultado);
+
+      if (password_verify($password, $datos['password'])) {
         if ($datos['rol'] == 'bann') {
-          echo "<br>";
-          echo "<div class='text-center'>";
-          echo "<img src='img/dibujitos/no2.png' alt='Baneado.png' width='200'>";
-          echo "<br>";
-          echo "<h3>Tu Cuenta ha sido suspendida</h3>";
-          echo "<br>";
-          echo "<br>";
-          echo "<a href='login.php' class='btn btn-lg hola'>Reintentar</a>";
-          echo "</div>";
+          echo "<br><div class='text-center'>
+                  <img src='img/dibujitos/no2.png' width='200'><br>
+                  <h3>Tu cuenta ha sido suspendida</h3><br><br>
+                  <a href='login.php' class='btn btn-lg hola'>Reintentar</a>
+                  </div>";
           exit;
         }
-        // Si no esta ban pues inicia sesion todo normal
-        else {
-          $_SESSION['idUsuario'] = $datos['idUsuario'];
-          $_SESSION['email'] = $datos['email'];
-          $_SESSION['user'] = $datos['nombre_usuario'];
-          $_SESSION['rol'] = $datos['rol'];
-          $_SESSION['idUsuario'] = $datos['idUsuario'];
-        }
 
-        header("Location: login.php");
-      } else {
-        echo "<br>";
-        echo "<div class='text-center'>";
-        echo "Email o contraseña incorrectos.";
-        echo "<br>";
-        echo "<br>";
-        echo "<a href='login.php' class='btn btn-lg hola'>Reintentar</a>";
-        echo "</div>";
+        $_SESSION['idUsuario'] = $datos['idUsuario'];
+        $_SESSION['email'] = $datos['email'];
+        $_SESSION['user'] = $datos['nombre_usuario'];
+        $_SESSION['rol'] = $datos['rol'];
+
+        header("Location: libros.php");
+        exit;
       }
-    
+    }
+      
+    else {
+        echo "<div class='text-center'>
+                <img src='img/dibujitos/no2.png' width='200'><br>
+                <h3>Usuario o contraseña incorrectos</h3><br><br>
+                <a href='login.php' class='btn btn-lg hola'>Reintentar</a>
+              </div>";
+    }
   }
   
 }

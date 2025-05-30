@@ -1,8 +1,21 @@
 <?php
 
-// Para crear la sesion (se guarda 1 dia la cookie)
-session_set_cookie_params(86400); // Es 1 dia en segundos
+session_set_cookie_params(60 * 60 * 24 * 30); // Supuestamente 1 mes en segundos según Google
 session_start();
+
+
+// Para saber si seta ban y cerrarle la sesión
+include 'config/conexion.php';
+$consulta = "SELECT idUsuario, rol FROM Usuario WHERE idUsuario = '".$_SESSION['idUsuario']."'";
+$resultado = mysqli_query($conn, $consulta);
+$fila = mysqli_fetch_assoc($resultado);
+$estado = $fila['rol'];  
+if ($estado == 'bann') {
+  session_unset();
+  session_destroy();
+  header("Location: /login.php?error=Cuenta suspendida");
+}
+mysqli_close($conn);
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +35,7 @@ session_start();
 
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
-    <a class="navbar-brand" href="libros.php"><img src="/img/logo/logo.png" alt="" width="130"></a>
+    <a class="navbar-brand" href="/libros.php"><img src="/img/logo/logo.png" alt="" width="130"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,11 +46,11 @@ session_start();
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
         <?php
-        echo "<a class='nav-link text-dark' href='usuario.php'>".$_SESSION['user']."</a>";
+        echo "<a class='nav-link text-dark' href='/usuario.php'>".$_SESSION['user']."</a>";
         ?>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="salir.php">Salir</a>
+          <a class="nav-link text-dark" href="/salir.php">Salir</a>
         </li>
       </ul>
     </div>
@@ -47,10 +60,10 @@ session_start();
       <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link text-dark" href="login.php">Iniciar sesión</a>
+          <a class="nav-link text-dark" href="/login.php">Iniciar sesión</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="registro.php">Registrarse</a>
+          <a class="nav-link text-dark" href="/registro.php">Registrarse</a>
         </li>
       </ul>
     </div>

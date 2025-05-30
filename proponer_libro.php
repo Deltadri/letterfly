@@ -21,9 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Procesar géneros
     $generos = isset($_POST['generos']) ? implode(',', array_map(
-        fn($g) => mysqli_real_escape_string($conn, $g),
-        $_POST['generos']
+    function($g) use ($conn) {
+        return mysqli_real_escape_string($conn, $g);
+    },
+    $_POST['generos']
     )) : '';
+
 
     // Subida de imagen
     $portada = null;
