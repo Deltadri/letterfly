@@ -6,9 +6,7 @@
 
 ---
 
-📌 **Versión 1.0 estable**
-
-Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
+Una plataforma web para guardar, organizar y leer **reseñas de libros**.
 
 ---
 
@@ -41,7 +39,7 @@ Una plataforma web para guardar, organizar y descubrir **reseñas de libros**.
 - MySQL / MariaDB
 - Bootstrap 5
 - HTML5 + CSS3
-- (el mínimo posible porque no lo entiendo) JavaScript
+- JavaScript (el mínimo posible porque no lo entiendo)
 
 ---
 
