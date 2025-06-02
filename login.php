@@ -53,14 +53,14 @@ if (!isset($_SESSION['user'])) {
         header("Location: libros.php");
         exit;
       }
-    }
-      
-    else {
+
+      else {
         echo "<div class='text-center'>
                 <img src='img/dibujitos/no2.png' width='200'><br>
                 <h3>Usuario o contraseña incorrectos</h3><br><br>
                 <a href='login.php' class='btn btn-lg hola'>Reintentar</a>
               </div>";
+      }
     }
   }
   
