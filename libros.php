@@ -3,7 +3,6 @@ session_start();
 
 include 'header.php';
 
-// Conexión normalita a la base de datos
 include 'config/conexion.php'; // Este archivo debe crear una conexión tipo: $conn = mysqli_connect(...);
 
 // Búsqueda segura

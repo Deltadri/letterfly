@@ -1,5 +1,4 @@
 <?php
-//session_start(); // Siempre al principio del archivo
 include ("header.php");
 
 if (!isset($_SESSION['user'])) {
@@ -62,6 +61,14 @@ if (!isset($_SESSION['user'])) {
               </div>";
       }
     }
+
+    else {
+        echo "<div class='text-center'>
+                <img src='img/dibujitos/no2.png' width='200'><br>
+                <h3>Usuario o contraseña incorrectos</h3><br><br>
+                <a href='login.php' class='btn btn-lg hola'>Reintentar</a>
+              </div>";
+      }
   }
   
 }

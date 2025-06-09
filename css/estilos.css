@@ -9,6 +9,9 @@
     text-align: center;
 }
 
+.navbar-custom {
+  background-color: #00bf63;
+}
 
 .hola {
     background-color: #cfa400 !important;

@@ -137,7 +137,7 @@ $listaGeneros = implode(', ', $generos);
                 echo "</div>";
                 echo "<div class='mb-3'>";
                 echo "<label for='comentario' class='form-label'>Comentario</label>";
-                echo "<textarea name='comentario' class='form-control' rows='3' required></textarea>";
+                echo "<textarea name='comentario' class='form-control' rows='3' maxlength='250' required></textarea>";
                 echo "</div>";
                 echo "<button type='submit' class='btn btn-primary'>Enviar</button>";
                 echo "</form>";
@@ -148,6 +148,15 @@ $listaGeneros = implode(', ', $generos);
                     echo "<div class='card mb-3'>";
                     echo "<div class='card-body'>";
                     echo "<h5 class='card-title'>" . htmlspecialchars($comentario['nombre_usuario']) . "</h5>";
+
+                    if (isset($_SESSION['user']) && $_SESSION['user'] === $comentario['nombre_usuario']) {
+                        echo "<form action='eliminar_comentario.php' method='POST'>";
+                        echo "<input type='hidden' name='idOpinion' value='" . htmlspecialchars($comentario['idOpinion']) . "'>";
+                        echo "<input type='hidden' name='idLibro' value='" . htmlspecialchars($idLibro) . "'>";
+                        echo "<button type='submit' class='btn btn-sm btn-danger mb-2'>Eliminar</button>";
+                        echo "</form>";
+                    }
+
 
                     // Mostrar puntuación con estrellas
                     $puntuacion = (int)$comentario['puntuacion'];
