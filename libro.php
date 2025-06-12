@@ -1,26 +1,43 @@
+<!--
+_______________________________________________________________________________
+ __       ______  ______  ______  ______   ______   ______  __       __  __    
+/\ \     /\  ___\/\__  _\/\__  _\/\  ___\ /\  == \ /\  ___\/\ \     /\ \_\ \   
+\ \ \____\ \  __\\/_/\ \/\/_/\ \/\ \  __\ \ \  __< \ \  __\\ \ \____\ \____ \  
+ \ \_____\\ \_____\ \ \_\   \ \_\ \ \_____\\ \_\ \_\\ \_\   \ \_____\\/\_____\ 
+  \/_____/ \/_____/  \/_/    \/_/  \/_____/ \/_/ /_/ \/_/    \/_____/ \/_____/ 
+_______________________________________________________________________________
+Desarrollado por Adrián Fernández Ternero
+Licenciado bajo: AGPLv3
+letterfly.net
+
+
+https://github.com/Adrifer24/letterfly
+
+-->
+
 <head>
     <link rel="stylesheet" href="css/libro.css">
 
     <style>
-.valoracion-media {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.puntuacion-comentario.justify-content-center {
-    font-size: 1.5rem;
-}
-
-.estrella {
-    width: 32px;
-    height: 32px;
-}
-
-.estrella.vacia {
-    opacity: 0.2;
-}
-</style>
+        .valoracion-media {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    
+        .puntuacion-comentario.justify-content-center {
+            font-size: 1.5rem;
+        }
+    
+        .estrella {
+            width: 32px;
+            height: 32px;
+        }
+    
+        .estrella.vacia {
+            opacity: 0.2;
+        }
+    </style>
 
 </head>
 
