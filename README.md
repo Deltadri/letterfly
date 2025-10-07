@@ -1,7 +1,7 @@
 <h1 align=center>Letterfly</h1>
 
-[![Twitter - Deltadri](https://img.shields.io/badge/Twitter-Adrifer24-black?logo=x)](https://x.com/Deltadri)
-[![Discord - Deltadri](https://img.shields.io/badge/Discord-Letterfly-blue?logo=discord)](https://discord.gg/Au2UHqSd6U)
+[![Twitter - Deltadri](https://img.shields.io/badge/Twitter-Deltadri-black?logo=x)](https://x.com/Deltadri)
+[![Discord - Deltadri](https://img.shields.io/badge/Discord-Deltadri-blue?logo=discord)](https://discord.gg/Au2UHqSd6U)
 [![PHP - 7.4](https://img.shields.io/badge/PHP-7.4-green?logo=php)](https://www.php.net/releases/7_4_0.php)
 
 ---
